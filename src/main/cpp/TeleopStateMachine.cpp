@@ -1,8 +1,9 @@
 #include "TeleopStateMachine.h"
 
-TeleopStateMachine::TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick)
+TeleopStateMachine::TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick, Barrel *barrel_)
 {
     shooter = shooter_;
+    barrel = barrel_;
 }
 
 void TeleopStateMachine::StateMachine(){

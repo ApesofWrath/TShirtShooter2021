@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Shooter.h"
+#include "Barrel.h"
 #include <frc/Joystick.h>
 
 class TeleopStateMachine
@@ -16,8 +18,9 @@ public:
     States current_state;
 
     Shooter *shooter;
+    Barrel *barrel;
 
-    TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick);
+    TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick, Barrel *barrel_);
     void StateMachine();
 };
 

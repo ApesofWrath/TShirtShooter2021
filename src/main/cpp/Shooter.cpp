@@ -1,5 +1,7 @@
 #include "Shooter.h"
 
+// Will contain the controls for firing and compressors
+
 Shooter::Shooter()
 {
 

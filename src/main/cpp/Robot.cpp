@@ -25,7 +25,8 @@ void Robot::TeleopInit() {
   controller = new frc::Joystick(0);
 
   shooter = new Shooter();
-  tsm = new TeleopStateMachine(shooter, controller);
+  barrel = new Barrel();
+  tsm = new TeleopStateMachine(shooter, controller, barrel);
 
 }
 

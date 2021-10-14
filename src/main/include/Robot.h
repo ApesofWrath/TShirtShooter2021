@@ -9,6 +9,7 @@
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SendableChooser.h>
 #include "Shooter.h"
+#include "Barrel.h"
 #include "TeleopStateMachine.h"
 
 class Robot : public frc::TimedRobot {
@@ -26,6 +27,7 @@ class Robot : public frc::TimedRobot {
 
   frc::Joystick *controller;
 
+  Barrel *barrel;
   Shooter *shooter;
   TeleopStateMachine *tsm;
 
