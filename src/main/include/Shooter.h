@@ -7,7 +7,16 @@ private:
     WPI_TalonSRX *m_compressor1;
 
 public:
+
+    enum States {
+        INIT
+    };
+
+    States current_state;
+
     Shooter();
+    void Init();
+    void StateMachine();
 };
 
 

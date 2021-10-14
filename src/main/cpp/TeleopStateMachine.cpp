@@ -4,6 +4,7 @@ TeleopStateMachine::TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystic
 {
     shooter = shooter_;
     barrel = barrel_;
+    
 }
 
 void TeleopStateMachine::StateMachine(){
