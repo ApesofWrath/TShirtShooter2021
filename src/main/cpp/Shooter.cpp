@@ -19,6 +19,11 @@ void Shooter::StateMachine() {
             Init();
 
         break;
+
+        case States::UP:
+            
+            break;
+
         
     }
 
