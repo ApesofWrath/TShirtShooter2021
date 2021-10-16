@@ -10,7 +10,7 @@ public:
 
     enum States {
         INIT, UP, DOWN, 
-        STOP
+        STOP, GO
     };
 
     States current_state;
