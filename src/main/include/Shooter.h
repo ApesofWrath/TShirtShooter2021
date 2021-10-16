@@ -9,7 +9,7 @@ private:
 public:
 
     enum States {
-        INIT, UP
+        INIT, UP, DOWN
     };
 
     States current_state;
