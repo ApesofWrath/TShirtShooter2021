@@ -5,12 +5,21 @@
 class Barrel
 {
 private:
-    
+    WPI_TalonSRX *elevation_talon;  
 public:
-    Barrel();
-    float GetElevation();
+    enum States{
+        INIT, UP, DOWN, 
+        STOP
+    };
 
-    WPI_TalonSRX *elevation_talon;
+    States current_state;
+
+    Barrel();
+        void Init();
+        void StateMachine();
+        void Down();
+        void Up();
+        void Stop();
 };
 
 
