@@ -1,10 +1,35 @@
 #include "TeleopStateMachine.h"
 
-TeleopStateMachine::TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick, Barrel *barrel_)
+TeleopStateMachine::TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick_, Barrel *barrel_)
 {
     shooter = shooter_;
     barrel = barrel_;
+    joystick = joystick_;
     
+}
+
+void TeleopStateMachine::UpdateButtons(){
+    if(joystick->GetRawButton(start_compressor_button)){
+        current_state = States::RUN;
+    }
+
+    if(joystick->GetRawButton(stop_compressor_button)){
+        current_state = States::STOP;
+    }
+
+    if(joystick->GetRawButton(shoot_button)){
+        current_state = States::SHOOT;
+    } else {
+        current_state = States::STOP;
+    }
+
+    if(joystick->GetRawButton(up_button)){
+        current_state = States::UP;
+    }
+
+    if(joystick->GetRawButton(down_button)){
+        current_state = States::DOWN;
+    }
 }
 
 void TeleopStateMachine::StateMachine(){
@@ -12,22 +37,29 @@ void TeleopStateMachine::StateMachine(){
     switch (current_state)
     {
     case States::INIT:
-        
+        shooter->current_state = Shooter::States::INIT;
         break;
     
-    case States::WAIT_FOR_BUTTON:
+    case States::RUN:
+        shooter->current_state = Shooter::States::GO;
+        
+        break;
+
+    case States::STOP:
+        shooter->current_state = Shooter::States::STOP;
 
         break;
 
-    case States::INPUT_VALVE:
+    case States::SHOOT:
+        shooter->current_state = Shooter::States::SHOOT;
 
         break;
 
-    case States::OUTPUT_VALVE:
+    case States::UP:
 
         break;
 
-    case States::UP_STATE:
+    case States::DOWN:
 
         break;
 

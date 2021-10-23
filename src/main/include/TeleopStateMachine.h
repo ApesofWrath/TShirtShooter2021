@@ -11,16 +11,33 @@ private:
 public:
 
     enum States {
-        INIT, WAIT_FOR_BUTTON, INPUT_VALVE,
-        UP_STATE, OUTPUT_VALVE, EMERGENCY_STATE
+        INIT, RUN, STOP,
+        UP, SHOOT, DOWN,
+        EMERGENCY_STATE
     };
 
     States current_state;
 
     Shooter *shooter;
     Barrel *barrel;
+    frc::Joystick *joystick;
 
-    TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick, Barrel *barrel_);
+    int start_compressor_button = 5;
+    int stop_compressor_button = 6;
+    int shoot_button = 8;
+    int up_button = 10;
+    int down_button = 9;
+    int emergency_button = 999;
+
+    bool start_compressor;
+    bool stop_compressor;
+    bool shoot;
+    bool up;
+    bool down;
+    bool emergency;
+
+    TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystick_, Barrel *barrel_);
+    void UpdateButtons();
     void StateMachine();
 };
 
