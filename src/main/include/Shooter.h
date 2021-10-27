@@ -2,6 +2,8 @@
 
 #include <ctre/Phoenix.h>
 #include <frc/WPILib.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <chrono>
 
 class Shooter
 {
