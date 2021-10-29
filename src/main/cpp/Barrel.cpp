@@ -6,18 +6,20 @@
 Barrel::Barrel()
 {
     elevation_talon = new WPI_TalonSRX(28);
+    controller = new frc::Joystick(0);
 }
 
 void Barrel::Init() { 
     elevation_talon->Set(0);
 }
 
-void Barrel::Down() { 
-    elevation_talon->Set(-0.3);
+void Barrel::Down() {  // joy->GetRawAxis(0)
+    frc::SmartDashboard::PutNumber("joy axis 1", controller->GetRawAxis(1));
+    elevation_talon->Set(-0.2 * (controller->GetRawAxis(1) + 1));
 }
 
 void Barrel::Up() { 
-    elevation_talon->Set(0.3);
+    elevation_talon->Set(0.2 * ((controller->GetRawAxis(0) + 1)));
 }
 
 void Barrel::Stop() { 
@@ -26,6 +28,8 @@ void Barrel::Stop() {
 
 void Barrel::StateMachine() {
     frc::SmartDashboard::PutNumber("b state", current_state);
+    frc::SmartDashboard::PutNumber("joy axis 1", controller->GetRawAxis(1));
+
     switch (current_state)
     {
         case States::INIT:

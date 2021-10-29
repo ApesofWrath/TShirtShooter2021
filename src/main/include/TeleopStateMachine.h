@@ -13,7 +13,7 @@ public:
     enum States {
         INIT, RUN, STOP,
         UP, SHOOT, DOWN,
-        EMERGENCY_STATE
+        STOP_BARREL, EMERGENCY
     };
 
     States current_state;

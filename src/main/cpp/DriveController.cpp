@@ -18,8 +18,8 @@ DriveController::DriveController() {
 
 void DriveController::Drive(frc::Joystick *joyThrottle) {
 
-	target_l = joyThrottle->GetY() * MAX_Y_RPM;
-	target_r = joyThrottle->GetY() * MAX_Y_RPM;
+	target_l = 0 * MAX_Y_RPM;
+	target_r = 0 * MAX_Y_RPM;
 
     /*
 	current_l = (canTalonFrontLeft->GetSensorCollection().GetQuadratureVelocity() / UNITS_PER_ROT) * MINUTE_CONVERSION;
@@ -29,7 +29,7 @@ void DriveController::Drive(frc::Joystick *joyThrottle) {
 	error_r = target_r + current_r;
     */
 
-	target_yaw_rate = 1.0 * (joyThrottle->GetX()) * MAX_YAW_RATE; //left should be positive
+	target_yaw_rate = 1.0 * (0) * MAX_YAW_RATE; //left should be positive
 	
     /*
     yaw_rate_current = 1.0 * (double) ahrs->GetRawGyroZ()
