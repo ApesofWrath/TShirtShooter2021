@@ -27,12 +27,14 @@ void Robot::TeleopInit() {
   shooter = new Shooter();
   barrel = new Barrel();
   tsm = new TeleopStateMachine(shooter, controller, barrel);
+  drive_controller = new DriveController();
 
 }
 
 void Robot::TeleopPeriodic() {
 
   tsm->StateMachine();
+  drive_controller->Drive(controller);
 
 }
 

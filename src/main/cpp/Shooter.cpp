@@ -32,11 +32,14 @@ void Shooter::Shoot(){
     m_firing_valve->Set(true);
 }
 
-
+void Shooter::ResetCounter() {
+    start = std::chrono::steady_clock::now();
+}
 
 void Shooter::StateMachine() {
-
+    counter = std::chrono::steady_clock::now() - start;
     frc::SmartDashboard::PutNumber("s state", current_state);
+    frc::SmartDashboard::PutNumber("Counter", counter.count());
 
     switch (current_state)
     {
@@ -56,10 +59,11 @@ void Shooter::StateMachine() {
             break;
         case States::SHOOT:
             Shoot();
+            ResetCounter();
 
             break;
             
-
+        last_state = current_state;
         
     }
 

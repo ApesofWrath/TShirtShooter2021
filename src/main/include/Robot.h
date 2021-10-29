@@ -11,7 +11,7 @@
 #include "Shooter.h"
 #include "Barrel.h"
 #include "TeleopStateMachine.h"
-
+#include "DriveController.h"
 class Robot : public frc::TimedRobot {
  public:
   void RobotInit() override;
@@ -30,6 +30,7 @@ class Robot : public frc::TimedRobot {
   Barrel *barrel;
   Shooter *shooter;
   TeleopStateMachine *tsm;
+  DriveController *drive_controller;
 
  private:
   frc::SendableChooser<std::string> m_chooser;

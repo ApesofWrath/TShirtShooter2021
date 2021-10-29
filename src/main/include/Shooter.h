@@ -12,6 +12,11 @@ private:
     WPI_TalonSRX *m_compressor2;
     frc::Solenoid *m_firing_valve;
 
+    std::chrono::duration<double> counter;
+    
+    std::chrono::time_point<std::chrono::steady_clock> start;
+
+    std::chrono::time_point<std::chrono::steady_clock> end;
 public:
 
     enum States {
@@ -20,14 +25,16 @@ public:
     };
 
     States current_state;
+    States last_state;
 
     Shooter();
     void Init();
     void Stop();
     void Go();    
     void Shoot();    
-    
-    
+    // void StartCounter();
+    void ResetCounter();
+
     void StateMachine();
 };
 

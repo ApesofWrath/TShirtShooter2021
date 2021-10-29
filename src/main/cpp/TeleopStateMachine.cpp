@@ -6,27 +6,24 @@ TeleopStateMachine::TeleopStateMachine(Shooter *shooter_, frc::Joystick *joystic
     barrel = barrel_;
     joystick = joystick_;
     
+    current_state = States::STOP;
 }
 
 void TeleopStateMachine::UpdateButtons(){
-    
+
     if(joystick->GetRawButton(8)){
         current_state = States::SHOOT;
-    } else {
-        current_state = States::STOP;
     }
     
-    frc::SmartDashboard::PutBoolean("work", joystick->GetRawButton(5));
+
     if(joystick->GetRawButton(5)){
 
         current_state = States::RUN;
-    }
+    } 
 
     if(joystick->GetRawButton(6)){
         current_state = States::STOP;
     }
-
-    
 
     if(joystick->GetRawButton(up_button)){
         current_state = States::UP;
