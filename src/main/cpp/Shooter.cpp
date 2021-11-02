@@ -7,7 +7,8 @@ Shooter::Shooter()
 
     m_compressor1 = new WPI_TalonSRX(1);
     m_compressor2 = new WPI_TalonSRX(11);
-    m_firing_valve = new frc::Solenoid(0, 3); // Solenoid
+    m_firing_valve = new frc::Solenoid(0, 2); // Solenoid
+    m_emergency_valve = new frc::Solenoid(0, 3);
 
 
 }
@@ -15,6 +16,7 @@ Shooter::Shooter()
 void Shooter::Init() { 
     m_compressor1->Set(0.0);
     m_compressor2->Set(0.0);
+    m_emergency_valve->Set(false);
 }
 
 void Shooter::Stop(){
@@ -26,6 +28,7 @@ void Shooter::Stop(){
 void Shooter::Go(){
     m_compressor1->Set(1.0);
     m_compressor2->Set(1.0);
+    m_firing_valve->Set(false);
 }
 
 void Shooter::Shoot(){
@@ -34,6 +37,7 @@ void Shooter::Shoot(){
 
 void Shooter::ResetCounter() {
     start = std::chrono::steady_clock::now();
+    m_emergency_valve->Set(true);
 }
 
 void Shooter::StateMachine() {

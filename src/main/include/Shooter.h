@@ -11,6 +11,8 @@ private:
     WPI_TalonSRX *m_compressor1;
     WPI_TalonSRX *m_compressor2;
     frc::Solenoid *m_firing_valve;
+    frc::Solenoid *m_emergency_valve;
+
 
     std::chrono::duration<double> counter;
     
