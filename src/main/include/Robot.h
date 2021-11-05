@@ -8,6 +8,7 @@
 #include <frc/TimedRobot.h>
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SendableChooser.h>
+#include <cameraserver/CameraServer.h>
 #include "Shooter.h"
 #include "Barrel.h"
 #include "TeleopStateMachine.h"

@@ -14,7 +14,7 @@ private:
 public:
     enum States{
         INIT, UP, DOWN, 
-        STOP
+        STOP, SLOW 
     };
 
     States current_state;
@@ -25,6 +25,7 @@ public:
         void Down();
         void Up();
         void Stop();
+        void Slow();
 };
 
 

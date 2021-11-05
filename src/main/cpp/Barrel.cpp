@@ -15,15 +15,19 @@ void Barrel::Init() {
 
 void Barrel::Down() {  // joy->GetRawAxis(0)
     frc::SmartDashboard::PutNumber("joy axis 1", controller->GetRawAxis(1));
-    elevation_talon->Set(-0.2 * (controller->GetRawAxis(1) + 1));
+    elevation_talon->Set(0.4); // * (controller->GetRawAxis(1) + 1));
 }
 
 void Barrel::Up() { 
-    elevation_talon->Set(0.2 * ((controller->GetRawAxis(0) + 1)));
+    elevation_talon->Set(-0.4); // * ((controller->GetRawAxis(0) + 1)));
 }
 
 void Barrel::Stop() { 
-    elevation_talon->Set(0);
+    elevation_talon->Set(-0.1);
+}
+
+void Barrel::Slow() {
+    elevation_talon->Set(-0.2);
 }
 
 void Barrel::StateMachine() {
@@ -46,6 +50,9 @@ void Barrel::StateMachine() {
             break;
         case States::STOP:
             Stop();
+            break;
+        case States::SLOW:
+            Slow();
             break;
         
     }

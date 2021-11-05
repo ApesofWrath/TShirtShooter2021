@@ -35,6 +35,10 @@ void TeleopStateMachine::UpdateButtons(){
         current_state = States::DOWN;
     }
 
+    if(joystick->GetRawButton(1)){
+        current_state = States::SLOW_BARREL;
+    }
+
     frc::SmartDashboard::PutNumber("state" ,(int) current_state);
 }
 
@@ -76,6 +80,10 @@ void TeleopStateMachine::StateMachine(){
 
     case States::EMERGENCY:
 
+        break;
+
+    case States::SLOW_BARREL:
+        barrel->current_state = Barrel::States::SLOW;
         break;
         
     default:

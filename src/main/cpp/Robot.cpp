@@ -12,6 +12,11 @@ void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  cs::UsbCamera camera = frc::CameraServer::GetInstance()->StartAutomaticCapture("TapeCamera", 0);
+
+  camera.SetResolution(320, 190);
+  camera.SetExposureManual(0);
+	camera.SetBrightness(100);
 }
 
 void Robot::RobotPeriodic() { }
