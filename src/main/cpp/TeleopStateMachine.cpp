@@ -35,7 +35,7 @@ void TeleopStateMachine::UpdateButtons(){
         current_state = States::DOWN;
     }
 
-    if(joystick->GetRawButton(1)){
+    if(joystick->GetRawButton(slow_button)){
         current_state = States::SLOW_BARREL;
     }
 
